@@ -21,7 +21,7 @@ const handleLogin = async (e) => {
             localStorage.setItem('token', res.data.token);
             
             // الفحص الذكي لرتبة المستخدم لتوجيهه للمكان الصحيح
-            if (res.data.user && res.data.user.role === 'admin') {
+            if (res.data.role === 'admin') {
                 navigate('/dashboard'); // توجيه الأدمن لمصنع البطاقات
             } else {
                 navigate('/customer-dashboard'); // توجيه العميل للوحته الخاصة بالعداد

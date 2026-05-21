@@ -16,6 +16,11 @@ exports.handleRedirect = async (req, res) => {
             return res.redirect(`https://amt-nfc-system-q1zi.vercel.app/activate/${shortCode}`);
         }
 
+        // إذا كانت البطاقة مقفلة، نمنع التحويل ونعرض رسالة 'البطاقة مقفلة'
+        if (card.isLocked) {
+            return res.status(403).send('البطاقة مقفلة');
+        }
+
         // إذا كانت مفعلة: نزيد النقرات ونوجهه لـ "الرابط النهائي" الذي اختاره
         card.clicksCount += 1;
         await card.save();

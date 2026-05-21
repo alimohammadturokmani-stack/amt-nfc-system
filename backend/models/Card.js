@@ -23,6 +23,10 @@ const cardSchema = new mongoose.Schema({
     clicksCount: {
         type: Number,
         default: 0, // عداد النقرات يبدأ من صفر
+    },
+    isLocked: {
+        type: Boolean,
+        default: false, // ميزة القفل البرمجي للبطاقات
     }
 }, { timestamps: true });
 
